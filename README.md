@@ -11,6 +11,62 @@ The Punk Command System is a versatile command management library that allows yo
 - **Nested Commands**: Execute commands within other commands using a simple syntax.
 - **Error Handling**: Comprehensive error messages for parameter mismatches and missing parameters.
 
+## Built-in Parameter Types
+
+The library provides several predefined parameter types that can be used when creating commands:
+
+- **`IntParameterType`**: Accepts integer values (e.g., `5`, `-10`).
+- **`FloatParameterType`**: Supports floating-point numbers (e.g., `3,14`, `-1,5`).
+- **`StringParameterType`**: Supports floating-point numbers (e.g., `"Hello"`).
+  
+### Example of using built-in parameter types:
+
+```csharp
+var exampleCommand = new Command(
+    _name: "example",
+    _action: ExampleCommandAction,
+    _parameters: new List<RequiredParameter>
+    {
+        new RequiredParameter(new IntParameterType(), "Number of repetitions"),
+        new RequiredParameter(new StringParameterType(), "Message")
+    }
+);
+commandManager.AddCommand(exampleCommand);
+```
+
+### 2. **Command Constructor Parameters**
+Commands are created using a constructor that accepts several parameters. Here’s a list of parameters that can be specified when creating a command:
+
+Пример:
+
+```markdown
+## Command Constructor Parameters
+
+Commands are created using a constructor that accepts several parameters. Here’s a list of parameters that can be specified when creating a command:
+
+- **`_name` (string)**: The name of the command, used to invoke it in the terminal.
+- **`_action` (CommandAction)**: The logic of the command — the function that will be executed when it is called. It accepts `ParametersData`, containing the values of the parameters.
+- **`_parameters` (List<RequiredParameter>)**: A list of required parameters for the command. Each parameter is specified by its data type (e.g., `IntParameterType`) and a description. 
+- **`_description` (string)**: A description of the command (empty string by default). It can be used to display help or documentation.
+- **`_runOtherCommandMethod` (RunOtherCommandMethod)**: A method for running other commands from the current one (default is `null`). You can use `CommandManager.ExecuteCommandAsync` or custom function.
+- **`_maxCommandDepth` (int)**: (int): The maximum command nesting depth (default is `3`), limiting the number of commands that can be called within one command.
+```
+```csharp
+// Example of creating a command:
+var exampleCommand = new Command(
+    _name: "example",
+    _action: ExampleCommandAction,
+    _parameters: new List<RequiredParameter>
+    {
+        new RequiredParameter(new IntParameterType(), "Number of repetitions"),
+        new RequiredParameter(new StringParameterType(), "Message")
+    },
+    _description: "This command prints the message a specified number of times.",
+    _runOtherCommandMethod: commandManager.ExecuteCommandAsync,
+    _maxCommandDepth: 2
+);
+```
+
 ## Getting Started
 
 ### Example Usage
@@ -32,7 +88,7 @@ var helloCommand = new Command(
 );
 commandManager.AddCommand(helloCommand);
 
-// Command action method
+// Command action function
 public static string HelloCommandAction(ParametersData parametersData)
 {
     string result = "";
