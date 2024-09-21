@@ -42,11 +42,4 @@
     <Reference Include="System.Xml" Condition="'$(TargetFramework)' == 'net48'" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Include="Command.cs" />
-    <Compile Include="CommandManager.cs" />
-    <Compile Include="Parameter.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-
 </Project>
