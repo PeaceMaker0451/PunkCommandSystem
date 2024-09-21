@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PunkCommands
+namespace PunkCommandSystem
 {
     public class ParameterException : Exception
     {

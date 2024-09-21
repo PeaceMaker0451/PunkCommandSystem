@@ -5,8 +5,8 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <OutputType>Library</OutputType>
-    <RootNamespace>PunkCommands</RootNamespace>
-    <AssemblyName>PunkCommands</AssemblyName>
+    <RootNamespace>PunkCommandSystem</RootNamespace>
+    <AssemblyName>PunkCommandSystem</AssemblyName>
     <TargetFrameworks>net48;net6.0</TargetFrameworks>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

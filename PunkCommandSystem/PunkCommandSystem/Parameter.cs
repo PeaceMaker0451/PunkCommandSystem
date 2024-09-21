@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace PunkCommands
+namespace PunkCommandSystem
 {
     public interface IParameterType
     {
