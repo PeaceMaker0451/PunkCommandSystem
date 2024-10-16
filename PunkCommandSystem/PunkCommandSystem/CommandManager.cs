@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace PunkCommandSystem
@@ -66,6 +67,19 @@ namespace PunkCommandSystem
             var commandCopy = command.Clone();
 
             return commandCopy.RunCommand(commandString).Result;
+        }
+
+        public List<Command> CommandsList()
+        {
+            //StringBuilder sb = new StringBuilder();
+            List<Command> commands = new List<Command>();
+
+            foreach (var command in _commands.Values)
+            {
+                commands.Add(command.Clone());
+            }
+
+            return commands;
         }
 
         // Извлечь имя команды из строки команды

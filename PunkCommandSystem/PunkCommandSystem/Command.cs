@@ -39,7 +39,7 @@ namespace PunkCommandSystem
         private readonly CommandAction action;
 
         private readonly RunOtherCommandMethod runOtherCommandMethod;
-        private bool canExecuteOtherCommand;
+        private readonly bool canExecuteOtherCommand;
 
         private readonly List<RequiredParameter> parameters;
         private List<Parameter> parametersValues;
@@ -337,18 +337,13 @@ namespace PunkCommandSystem
                 {
                     return runOtherCommandMethod(command).Result;
                 }
-                catch (KeyNotFoundException e)
+                catch (KeyNotFoundException)
                 {
-                    return "{" + command + "}";
+                    return command;
                 }
-                catch (Exception e)
-                {
-                    throw e;
-                }
-                
             }
 
-            return "{" + command + "}";
+            return command;
         }
 
         private bool EqualsName(string _command)
